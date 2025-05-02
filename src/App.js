@@ -1,37 +1,25 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
+import Rotas from './rotas';
+
 
 
 function App() {
-  const [email, setEmail] = useState('');
-  const [senha, setSenha] = useState('');
-  const [mensagem, setMensagem] = useState('');
-
-  function verificaLogin(){
-
-    if (email === 'eveline.amorim@pucpr.br' && senha === '123456') {
-      setMensagem('Acessado com sucesso!');
-    } else {
-      setMensagem('Usuário ou senha incorretos!');
-    }
-  }
 
   return (
-    <div>
-      <h1>Login</h1>
+    <Router>
 
-      <input type="text" value={email} onChange={(e) => setEmail(e.target.value)}/>
-      <br />
+      {/* Navegação */}
+      <nav style={{ marginBottom: '20px' }}>
+        <Link to="/" style={{ marginRight: '10px' }}>Principal</Link>
+        <Link to="/login" style={{ marginRight: '10px' }}>Login</Link>
+        <Link to="/cadastro" style={{ marginRight: '10px' }}>Cadastro</Link>
+      </nav>
+      {/* Área de Conteúdo */}
+      <Rotas />
 
-      <input type="password" value={senha} onChange={(e) => setSenha(e.target.value)}/>
-      <br />
-
-      <button onClick={verificaLogin}> Acessar </button>
-
-      <p>{mensagem}</p>
-    </div>
+    </Router>
   );
 }
-
-
 
 export default App;

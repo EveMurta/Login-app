@@ -1,0 +1,15 @@
+name: Send Discord Notification
+on: push
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    env:
+      DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK }}
+    steps:
+      - name: Send Discord Message
+        uses: sarge841/action-discord-webhook@v1
+        with:
+          content: 'Deployment by ${{ github.actor }} completed successfully!'
+          embed_title: 'Success'
+          embed_color: '2ECC71'
